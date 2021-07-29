@@ -2,9 +2,10 @@
 
 ## To-do
 
-- [ ] Get a bunch of quiz questions
-- [ ] Convert content to .csv
-- [ ] Create questions database
+- [ ] **Ginni** Populate `Printable` module with tools/methods for formatting game
+- [ ] **Hunter** `YAML` file or other for storage of question content to be pulled into game (questions database)
+- [ ] **Chris** `YAML` file for enemies and story messages / text
+- [x] Get a bunch of quiz questions
 - [ ] Generate 25 questions each:
   - [ ] Ginni - pointers, mutation, object passing
   - [ ] Hunter - return values, truthiness, ruby methods
