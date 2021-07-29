@@ -340,3 +340,309 @@ Answers: `['letter.upcase!']
 Description: It's also possible to mutate elements within a collection while iterating over it. Be careful that you don't make any permanent changes to your collections while manipulating on the level of a single element.
 
 ---
+
+```ruby
+i = 0
+______ do
+  i += 2
+  puts i
+  break if i >= 10
+end
+```
+
+Outputs: 2, 4, 6, 8, and 10 on separate lines.
+
+Answer: `['loop']`
+
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The blank line is missing the `loop` method invocation. 
+
+---
+
+```ruby
+i = 0
+loop do
+  i += 2
+  puts i
+  ______ if i >= 10
+end
+```
+
+Outputs: 2, 4, 6, 8, and 10 on separate lines.
+
+Answer: `['break']`
+
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The missing element is a `break` keyword, which will exit the loop when a certain condition is met. 
+
+---
+
+```ruby
+array = ['one', 'two', 'three', 'four']
+______ = 0
+
+loop do
+  puts array[counter]
+  counter += 1
+  break if counter >= array.length
+end
+```
+
+Outputs: one, two, three, and four on separate lines. 
+
+Answer: `['counter']`
+
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When used in conjunction with an `if` conditional statement the condition must evaluate to true in order for the `break` keyword to execute and to exit the loop. In this example the object referenced by local variable `counter` is being asked if it is greater than or equal to the the length of `array`. When this evaluates to `true` then the `break` keyword will break out of the loop. Because of variable scoping rules local variable `counter` must be initialized outside of the block passed to the `Kernal#loop` method so that it can be incremented upon each iteration of the loop. Therefore local variable `counter` should be initialized to integer object `0` on the second line.
+
+---
+
+```ruby
+array = ['one', 'two', 'three', 'four']
+counter = 0
+
+loop do
+  puts array[counter]
+  ______ += 1
+  break if counter >= array.length
+end
+```
+
+Outputs: one, two, three, and four on separate lines. 
+
+Answer: `['counter']`
+
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When used in conjunction with an `if` conditional statement the condition must evaluate to true in order for the `break` keyword to execute and exit the loop. In this example the object referenced by local variable `counter` is being asked if it is greater than or equal to the the length of `array`. When this evaluates to `true` then the `break` keyword will break out of the loop. In order for the `if` conditional to evaluate to `true` the object referenced by `counter` must be incremented, or else the result will be an infinite loop. Therefore, the clank line should be local variable `counter`.
+
+--- 
+
+```ruby
+animals = {
+  'dogs' => 12,
+  'cats' => 19,
+  'turtles' => 31
+}
+
+animals_to_adopt = animals.keys
+counter = 0
+
+loop do
+  break if counter >= animals.length
+  current_animal = animals_to_adopt[counter]
+  current_animals_available = animals[current_animal]
+  puts "The shelter has #{current_animals_available} #{current_animal} available to adopt."
+  ______ += 1
+end
+```
+
+Outputs: The shelter has 12 dogs available to adopt, The shelter has 19 cats available to adopt,  The shelter has 31 turtles available to adopt, all on separate lines.
+
+Answer: `['counter']`
+
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When the `break` keyword if executed based on an `if` conditional statement there needs to be an element that triggers the `if` statement to evaluate to `true`. This can be done in many ways. In this example the `break` keyword is only executed if the `if` conditional statment evaluates that the object referenced by `counter` is greater than or equal to the length of the `animals` hash. Knowing that `counter` is intialized to `0` above the `Kernal#loop` invocation, somewhere in the block passed to the `Kernal#loop` method `counter` needs to be incremented in order to avoid an infinite loop and trigger the `break` keyword execution. The blank space should be `counter` in order for this code to function properly. 
+
+---
+
+```ruby
+array = [1, 2, 3, 4, 5, 6, 7]
+counter = 0
+evens = []
+
+loop do
+  break if counter >= array.length
+  if array[counter].even?
+    ______ << array[counter]
+  end
+  counter += 1
+end
+
+p array 
+p evens
+```
+
+Outputs: [1, 2, 3, 4, 5, 6, 7] and [2, 4, 6] on separate lines.
+
+Answer: `['evens'`]
+
+Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example all of the even integers found in the array object referenced by local variable `array` are being selected and added to local variable `evens`. The `if array[counter].even?` statment is checking if the element passed to it is even and, if so, should push the current element to the array object referenced by `evens`. 
+
+---
+
+```ruby
+array = [1, 2, 3, 4, 5, 6, 7]
+counter = 0
+evens = []
+
+loop do
+  break if counter >= array.length
+  if array[counter].even?
+    evens << ______
+  end
+  counter += 1
+end
+
+p array 
+p evens
+```
+
+Outputs: 1, 2, 3, 4, 5, 6, 7] and [2, 4, 6] on separate lines.
+
+Answer: `['array[counter]']`
+
+Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example we are looking for all even integers found in `array`, so when `if array[counter].even?` evaluates to `true`, that means the current element is even and should be pushed to the `evens` array. Therefore `array[counter]` should be placed where the blank space is. 
+
+---
+
+```ruby
+array = [1, 2, 3, 4, 5, 6, 7]
+counter = 0
+
+loop do
+  break if counter >= array.length
+  array[counter] += ______
+  counter += 1
+end
+
+p array
+```
+
+Outputs: [2, 3, 4, 5, 6, 7, 8]
+
+Answer: `['1']`
+
+Description: This is an example of using the `Kernnal#loop` method to perform transformation over a collection. Transformation describes the process of manipulating each element in the collection, and using some evaluated expression to transform each element. Unless the process is stopped early, it will return the same amount of elements in the original collection. In this example the code outputs the array object referenced by `array` transformed by all of the integer objects incremented by `1`. Therefore the element reassignment (`[]=`) should be passed in `1` to achieve the output this code produces. 
+
+---
+
+```ruby
+array = [1, 2, 3, 4, 5, 6, 7]
+counter = 0
+
+loop do
+  break if counter >= array.length
+  array[______] += 1
+  counter += 1
+end
+
+array   # => [2, 3, 4, 5, 6, 7, 8]
+```
+
+Outputs: [2, 3, 4, 5, 6, 7, 8]
+
+Answer: `['counter']`
+
+Description: This is an example of using the `Kernnal#loop` method to perform transformation over a collection. Transformation describes the process of manipulating each element in the collection, and using some evaluated expression to transform each element. Unless the process is stopped early, it will return the same amount of elements in the original collection. In this example each integer object in `array` is being incremented by 1 according to the output. Therefore we should be able to see that some element in `array` is being set to its value plus `1`, and because `counter` is set to `0` and incremented by `1` each iteration it's safe to assume that `counter` being passed as where the blank space is will produce the output of this code.
+
+---
+
+```ruby
+comparison = 'Z' <=> 'a'
+
+p comparison
+
+# What will this output?
+```
+
+Outputs: What will this output?
+
+Answer: `[-1]`
+
+Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Strings are compared in ASCIIbetical Order. In this exmaple `'Z'` has a lesser value than `'a'` because uppercase letters come before lowercase letters in the ASCIIbetical order. 
+
+--- 
+
+```ruby
+comparison = 'apple' <=> 'ape'
+
+p comparison
+
+# What will this output?
+```
+
+Outputs: What will this output?
+
+Answer: `[1]`
+
+Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Strings are compared in ASCIIbetical Order. String beginning with a "lesser" letter in the ASCII table will come before those with a "greater" letter in the ASCII table. In the case where all comparable characters are equal, but one string is longer than the other, the longer string will be considered to be "greater". In this example both strings are the same for the first 3 characters, but because the first string is longer than the second string it is considered 'greater' than the second string, and will return `1`.
+
+---
+
+```ruby
+comparison = 1 <=> 'a'
+
+p comparison
+
+# What does this output?
+```
+
+Outputs: What will this output?
+
+Answer: `['nil']`
+
+Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. If the two operands are of different data types, they cannot be compared and nil is returned. The value returned by <=> is used by sorting methods to determine the order in which to place the items. Therefore, if <=> returns nil, the program will throw an ArgumentError. In this case `1` is an integer and `'a'` is a string so `nil` will be output.
+
+---
+
+```ruby
+comparison = [1, 1, 2] <=> [1, 2, 3]
+
+p comparison
+
+# What does this output?
+```
+
+Outputs: What does this output?
+
+Answer: `[-1]`
+
+Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Arrays are also compared element by element using `Array#<=>`. Similarly with `String#<=>`, when all the comparable elements in two arrays of different length are equal, the larger array will be considered to be "greater than".
+
+---
+
+```ruby
+friends = { "Ashley" => { job: 'designer', birthday: '8/23' }, 
+            "Joe" => { job: 'bartender', birthday: '7/12' },
+            "Sue" => { job: 'producer', birthday: '2/22' }}
+
+p friends["Joe"][______][0]
+
+# What's missing in this example?
+```
+
+Outputs: b
+
+Answer: `[:job]`
+
+Description: A nested data structure is any kind of collection that contains other collection(s) as one or more of it's elements. Each element of a collection, whether an upper level collection with collections as it's elements, or an inner collection, uses the element reference method standard for that particular data type. To reference specific elements of an inner sub-collection, chain element reference together. In this example `friends`references a nested hash object, when the key `'Joe'` is chained it then references hash object `{ job: 'bartender', birthday: '7/12' }`. We are missing a key but can see the output is `'b'` so of the 2 available key-value pairs available `:job` is the only that points to a string that has an element at index `0` matching our output. Therefore `:job` is the missing element in this situation.
+
+---
+
+```ruby
+array = [[1, 2], [3, 4], [5, 6]]
+
+p array[______]
+
+# What does this output?
+```
+
+Outputs: [[1, 2], [3, 4]]
+
+Answer: `['0, 2']`
+
+Description: A nested data structure is any kind of collection that contains other collection(s) as one or more of it's elements. Each element of a collection, whether an upper level collection with collections as it's elements, or an inner collection, uses the element reference method standard for that particular data type. To reference specific elements of an inner sub-collection, chain element reference together. In this example `array` is referencing an array object with 3 array object nested within it. If wanting to reference multiple elements of an array you can state the index of the first element followed by the number of elements total to be referenced. In order to have `[[1, 2], [3, 4]]` output in this case, you would need to start at index `0` and return `2` elements; `[0, 2]`.
+
+---
+
+```ruby
+array = [[1, 1], [3, 4], [5, 6]]
+array[0][1] = 2
+
+p array
+
+# What's missing in this example?
+```
+
+Outputs: [[1, 2], [3, 4], [5, 6]]
+
+Answer: `['0']`
+
+Description: You can chain together element reference with element assignment to reassign individual collection elements anywhere within a nested data structure. Be aware that reassigning or updating individual collection elements is a destructive action that permanently modifies the collection. In this example `array[______]` is referencing the first array object in the object referenced by `array`: `[1, 1]` and then assigning an the element at index 1 to integer object `2`. The output of this code shows you that it is the element at index 1 within the first element of `array` has been reassigned, so `0` is the missing item.
+
+---
