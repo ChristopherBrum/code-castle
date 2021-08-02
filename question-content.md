@@ -335,7 +335,7 @@ p array
 
 Outputs: `["A", "B", "C", "D"]`
 
-Answers: `['letter.upcase!']
+Answers: `['letter.upcase!']`
 
 Description: It's also possible to mutate elements within a collection while iterating over it. Be careful that you don't make any permanent changes to your collections while manipulating on the level of a single element.
 
@@ -354,7 +354,7 @@ Outputs: 2, 4, 6, 8, and 10 on separate lines.
 
 Answer: `['loop']`
 
-Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The blank line is missing the `loop` method invocation. 
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The blank line is missing the `loop` method invocation.
 
 ---
 
@@ -371,7 +371,7 @@ Outputs: 2, 4, 6, 8, and 10 on separate lines.
 
 Answer: `['break']`
 
-Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The missing element is a `break` keyword, which will exit the loop when a certain condition is met. 
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. The missing element is a `break` keyword, which will exit the loop when a certain condition is met.
 
 ---
 
@@ -386,7 +386,7 @@ loop do
 end
 ```
 
-Outputs: one, two, three, and four on separate lines. 
+Outputs: one, two, three, and four on separate lines.
 
 Answer: `['counter']`
 
@@ -405,13 +405,13 @@ loop do
 end
 ```
 
-Outputs: one, two, three, and four on separate lines. 
+Outputs: one, two, three, and four on separate lines.
 
 Answer: `['counter']`
 
 Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When used in conjunction with an `if` conditional statement the condition must evaluate to true in order for the `break` keyword to execute and exit the loop. In this example the object referenced by local variable `counter` is being asked if it is greater than or equal to the the length of `array`. When this evaluates to `true` then the `break` keyword will break out of the loop. In order for the `if` conditional to evaluate to `true` the object referenced by `counter` must be incremented, or else the result will be an infinite loop. Therefore, the clank line should be local variable `counter`.
 
---- 
+---
 
 ```ruby
 animals = {
@@ -436,7 +436,7 @@ Outputs: The shelter has 12 dogs available to adopt, The shelter has 19 cats ava
 
 Answer: `['counter']`
 
-Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When the `break` keyword if executed based on an `if` conditional statement there needs to be an element that triggers the `if` statement to evaluate to `true`. This can be done in many ways. In this example the `break` keyword is only executed if the `if` conditional statment evaluates that the object referenced by `counter` is greater than or equal to the length of the `animals` hash. Knowing that `counter` is intialized to `0` above the `Kernal#loop` invocation, somewhere in the block passed to the `Kernal#loop` method `counter` needs to be incremented in order to avoid an infinite loop and trigger the `break` keyword execution. The blank space should be `counter` in order for this code to function properly. 
+Description: This is an example of iteration using the `Kernal#loop` method to iterate through a collection. In order to break out of a loop the `break` keyword can be used. When the `break` keyword if executed based on an `if` conditional statement there needs to be an element that triggers the `if` statement to evaluate to `true`. This can be done in many ways. In this example the `break` keyword is only executed if the `if` conditional statment evaluates that the object referenced by `counter` is greater than or equal to the length of the `animals` hash. Knowing that `counter` is intialized to `0` above the `Kernal#loop` invocation, somewhere in the block passed to the `Kernal#loop` method `counter` needs to be incremented in order to avoid an infinite loop and trigger the `break` keyword execution. The blank space should be `counter` in order for this code to function properly.
 
 ---
 
@@ -461,7 +461,7 @@ Outputs: [1, 2, 3, 4, 5, 6, 7] and [2, 4, 6] on separate lines.
 
 Answer: `['evens'`]
 
-Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example all of the even integers found in the array object referenced by local variable `array` are being selected and added to local variable `evens`. The `if array[counter].even?` statment is checking if the element passed to it is even and, if so, should push the current element to the array object referenced by `evens`. 
+Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example all of the even integers found in the array object referenced by local variable `array` are being selected and added to local variable `evens`. The `if array[counter].even?` statment is checking if the element passed to it is even and, if so, should push the current element to the array object referenced by `evens`.
 
 ---
 
@@ -486,7 +486,7 @@ Outputs: 1, 2, 3, 4, 5, 6, 7] and [2, 4, 6] on separate lines.
 
 Answer: `['array[counter]']`
 
-Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example we are looking for all even integers found in `array`, so when `if array[counter].even?` evaluates to `true`, that means the current element is even and should be pushed to the `evens` array. Therefore `array[counter]` should be placed where the blank space is. 
+Description: This is an example of using the `Kernnal#loop` method to perform selection over a collection. Selection describes the process of picking certain elements out of a collection based on some condition or expression that evaluates to a Boolean value. In this example we are looking for all even integers found in `array`, so when `if array[counter].even?` evaluates to `true`, that means the current element is even and should be pushed to the `evens` array. Therefore `array[counter]` should be placed where the blank space is.
 
 ---
 
@@ -507,7 +507,7 @@ Outputs: [2, 3, 4, 5, 6, 7, 8]
 
 Answer: `['1']`
 
-Description: This is an example of using the `Kernnal#loop` method to perform transformation over a collection. Transformation describes the process of manipulating each element in the collection, and using some evaluated expression to transform each element. Unless the process is stopped early, it will return the same amount of elements in the original collection. In this example the code outputs the array object referenced by `array` transformed by all of the integer objects incremented by `1`. Therefore the element reassignment (`[]=`) should be passed in `1` to achieve the output this code produces. 
+Description: This is an example of using the `Kernnal#loop` method to perform transformation over a collection. Transformation describes the process of manipulating each element in the collection, and using some evaluated expression to transform each element. Unless the process is stopped early, it will return the same amount of elements in the original collection. In this example the code outputs the array object referenced by `array` transformed by all of the integer objects incremented by `1`. Therefore the element reassignment (`[]=`) should be passed in `1` to achieve the output this code produces.
 
 ---
 
@@ -521,7 +521,7 @@ loop do
   counter += 1
 end
 
-array   # => [2, 3, 4, 5, 6, 7, 8]
+array
 ```
 
 Outputs: [2, 3, 4, 5, 6, 7, 8]
@@ -542,11 +542,11 @@ p comparison
 
 Outputs: What will this output?
 
-Answer: `[-1]`
+Answer: `['-1']`
 
-Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Strings are compared in ASCIIbetical Order. In this exmaple `'Z'` has a lesser value than `'a'` because uppercase letters come before lowercase letters in the ASCIIbetical order. 
+Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Strings are compared in ASCIIbetical Order. In this exmaple `'Z'` has a lesser value than `'a'` because uppercase letters come before lowercase letters in the ASCIIbetical order.
 
---- 
+---
 
 ```ruby
 comparison = 'apple' <=> 'ape'
@@ -558,7 +558,7 @@ p comparison
 
 Outputs: What will this output?
 
-Answer: `[1]`
+Answer: `['1']`
 
 Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Strings are compared in ASCIIbetical Order. String beginning with a "lesser" letter in the ASCII table will come before those with a "greater" letter in the ASCII table. In the case where all comparable characters are equal, but one string is longer than the other, the longer string will be considered to be "greater". In this example both strings are the same for the first 3 characters, but because the first string is longer than the second string it is considered 'greater' than the second string, and will return `1`.
 
@@ -590,7 +590,7 @@ p comparison
 
 Outputs: What does this output?
 
-Answer: `[-1]`
+Answer: `['-1']`
 
 Description: Ruby uses the comparison method `<=>` to evaluate comparisons between elements in a collection. Expressions using `<=>` need to be performed on two object of the same data type. They then return either a `-1`, `0`, or `1` to indicate whether the first object is greater than, less than, or equal to the second object. Arrays are also compared element by element using `Array#<=>`. Similarly with `String#<=>`, when all the comparable elements in two arrays of different length are equal, the larger array will be considered to be "greater than".
 
@@ -608,7 +608,7 @@ p friends["Joe"][______][0]
 
 Outputs: b
 
-Answer: `[:job]`
+Answer: `[':job']`
 
 Description: A nested data structure is any kind of collection that contains other collection(s) as one or more of it's elements. Each element of a collection, whether an upper level collection with collections as it's elements, or an inner collection, uses the element reference method standard for that particular data type. To reference specific elements of an inner sub-collection, chain element reference together. In this example `friends`references a nested hash object, when the key `'Joe'` is chained it then references hash object `{ job: 'bartender', birthday: '7/12' }`. We are missing a key but can see the output is `'b'` so of the 2 available key-value pairs available `:job` is the only that points to a string that has an element at index `0` matching our output. Therefore `:job` is the missing element in this situation.
 
@@ -646,3 +646,220 @@ Answer: `['0']`
 Description: You can chain together element reference with element assignment to reassign individual collection elements anywhere within a nested data structure. Be aware that reassigning or updating individual collection elements is a destructive action that permanently modifies the collection. In this example `array[______]` is referencing the first array object in the object referenced by `array`: `[1, 1]` and then assigning an the element at index 1 to integer object `2`. The output of this code shows you that it is the element at index 1 within the first element of `array` has been reassigned, so `0` is the missing item.
 
 ---
+
+```ruby
+people = [{name: "Anne", color: "purple"}, {name: "Bill", color: "blue"}]
+
+people[0][______] = "Summer"
+
+p people
+```
+
+Outputs: [{:name=>"Anne", :color=>"purple", :season=>"Summer"}, {:name=>"Bill", :color=>"blue"}]
+
+Answer: `[':season']`
+
+Description: You can chain together element reference with element assignment to reassign individual collection elements anywhere within a nested data structure. Be aware that reassigning or updating individual collection elements is a destructive action that permanently modifies the collection. Adding a new key-value pair to a hash object is also done using element assignment. In this example we can see from the output that there is another key-value pair added to the hash object at index `0` of the array object referenced by `array`.
+
+---
+
+```ruby
+arr_a = %w(ant bat cat)
+arr_b = arr_a.dup
+
+p arr_a.object_id == arr_b.object_id
+
+# What does this output?
+```
+
+Outputs: What does this output?
+
+Answer: `['false']`
+
+Description: Ruby has ways of creating shallow copies of various Ruby objects. However, a shallow copy only copies the object the method is called on. This means that if the calling object contains other objects (such as in a collection or nested collection), those objects are shared rather than copied. The elements within a copied collection will reference the same object in memory as the original collection, and this is known as a shallow copy. In this example a shallow copy of `arr_a` is created when the `Object#dup` method is called on it and assigned to `arr_b`. This creates an entirely new object with shared references of the object within it. So when `arr_a.object_id` and `arr_b.object_id` are compared it returns `false`.
+
+---
+
+```ruby
+arr_a = %w(ant bat cat)
+arr_b = arr_a.dup
+
+arr_b[1].upcase!
+
+p arr_a
+
+# What does this output?
+```
+
+Outputs: What does this output?
+
+Answer: `['["ant", "BAT", "cat"]']`
+
+Description: Ruby has ways of creating shallow copies of various Ruby objects. However, a shallow copy only copies the object the method is called on. This means that if the calling object contains other objects (such as in a collection or nested collection), those objects are shared rather than copied. The elements within a copied collection will reference the same object in memory as the original collection, and this is known as a shallow copy. In this example, because a shallow copy only creates a copy of the object it is called upon, only a copy of the array object referenced by `arr_a` is created, not the elements within it. Therefore when the `String#upcase!` method is called on the element at index `1` of `arr_b`, which is destrucive, that is the same object at index `1` of `arr_a` as well, which is why `["ant", "BAT", "cat"]` is returned when the object referenced by `arr_a` is output.
+
+---
+
+```ruby
+string = 'hello'
+string.freeze
+______ << ' world'
+```
+
+Outputs: FrozenError: cannot modify frozen string
+
+Answer: `['string']`
+
+Description: Ruby objects can be frozen to prevent them from being modified. To do so, we use the `Object#freeze` method. In this example the object referenced by local variable `string` is frozen, so when the code attempts to concatenate the string object `' world'` onto the `string`, a `FrozenError` is thrown because the object referenced by `string` cannot be modified.
+
+---
+
+```ruby
+array = ["apple", "book", "car", "dog"]
+array.______
+
+array[0] = 'ant'
+```
+
+Outputs: FrozenError (can't modify frozen Array: ["apple", "book", "car", "dog"])
+
+Answer: `['freeze']`
+
+Description: Description: Ruby objects can be frozen to prevent them from being modified. To do so, we use the `Object#freeze` method. In this example a `FrozenError` is thrown which will not allow the object at index `0` of the array object `array` to be reassigned. Therefore we know `array` has been frozen, and the missing element in the code is the `Object#freeze` method.
+
+---
+
+```ruby
+nums = [3, 2, 6, 4, 8, 1, 5, 9, 0]
+
+nums.sort { |a, b| ______ }
+```
+
+Outputs: [9, 8, 6, 5, 4, 3, 2, 1, 0]
+
+Answer: `["b <=> a"]`
+
+Description: sort returns an array containing all the items in the calling collection sorted. Calling sort with a block gives a way to control how the items are sorted. The block takes two arguments, the two items to be compared, and the return value of the block must be `-1`, `1`, or `0` (i.e. it should probably use `<=>`). You can put additional code in the block if you need to, as long as its return value is one of those supported by `<=>`. In this example the output is the `nums` array sorting in descending order, therefore block parameter `b` will need to be on the left side of the `<=>` operator, and block parameter `a` on the right.
+
+---
+
+```ruby
+p (
+  ['cat', 'a', 'big', 'always', 'naps'].sort do |a, b|
+    ______ <=> b.size
+  end
+)
+```
+
+Outputs: ["a", "cat", "big", "naps", "always"]
+
+Answer: `["a.size"]`
+
+Description: sort returns an array containing all the items in the calling collection sorted. Calling sort with a block gives a way to control how the items are sorted. The block takes two arguments, the two items to be compared, and the return value of the block must be `-1`, `1`, or `0` (i.e. it should probably use `<=>`). You can put additional code in the block if you need to, as long as its return value is one of those supported by `<=>`. In this example a block is passed to the `sort` method and the length of the strings are being compared and sorted. Therefore `a.size` is needed to complete the comparison.
+
+---
+
+```ruby
+p (
+  [123, 432, 543, 642, 543, 256].______ do |num|
+    num.digits.last
+  end
+)
+```
+
+Outputs: [123, 256, 432, 543, 543, 642]
+
+Answer: `['sort_by']`
+
+Description: The `Enumeral#sort_by` method is useful for sorting items via a specific criteria, or sorting items in a hash. It takes a block, and each element in the calling collection is assigned to (one of) the block parameter(s). Then, it uses the return value of the block to determine how the collection should be sorted. `Enumerable#sort_by` always returns an array.Unlike sort, the block does not need to return `-1`, `1`, `0` or `nil`, only the criteria by which you want the collection to be sorted. In this circumstance we know the block is searching for the last digit of the numbers passed into it and sorting accordingly. But because the block is not returning `-1`, `0`, `1` or `nil` we know the `sort` method is not being used, therefore `sort_by` is the what is being used.
+
+---
+
+```ruby
+words = ['falafel', 'ape', 'coffee', 'sky', 'pals', 'hi']
+
+shortest_words = words.______(2) { |a, b| a.size <=> b.size }
+
+p shortest_words
+```
+
+Outputs: ["hi", "sky"]
+
+Answer: `['min']`
+
+Description: `Enumerable#min` returns the object in the calling collection with the "minimum" value. You can pass it a block to determine how elements are compared. The block takes two arguments (items being compared) and must return either `-1`, `1`, or `0`. You can also pass it an argument `n` in order to return `n` number minimum elements from the calling collection. This subgroup will be returned as a sorted array. The argument can be used both with and without the block. In this example `["hi", "sky"]` is the output and the block is utilizing the `<=>` method, but with the optional argument of `2` being passed to the missing method. This shows that the method is sorting through the array by string length using the operator mehtod and then returning the `2` shortest strings. This is only achievable using the `Enumerable#min` method.
+
+---
+
+```ruby
+words = %w(cantaloupe apple durian)
+
+least_vowels = words.min_by(2) { |word| word.count("aeiou") }
+
+p least_vowels
+```
+
+Outputs: ["apple", "durian"]
+
+Answer: `['min_by']`
+
+Description: `Enumerable#min_by` is passed a block when invoked, and returns the element from the calling collection for which the block returns the minimum value. Like `Enumerable#min` you can also pass it an argument, `n`, in order to return `n` number of minimum elements as an array sorted by the value given by the block. In this example the block is not utilizing the comparison method but instead looking for a numberical value. Then returning the `2` strings with the least vowels. This is achieved by using the `Enumerable#min_by` method.
+
+---
+
+```ruby
+words = %w(cantaloupe apple durian bananas)
+
+p words.______(2)
+```
+
+Outputs: ["durian", "cantaloupe"]
+
+Answer: `['max']`
+
+Description: `Enumerable#max` returns the object in the collection with the maximum value. By default, the method uses `<=>` to compare elements within the calling collection. Alternatively, you can pass it a block to determine how elements are compared. The block takes two arguments (the items being compared) and must return either `-1`, `1`, or `0`. The method also takes optional argument `n`, either with or without the block, which causes the method to return `n` number maximum elements in a sorted array. In this example the `<=>` method is being utilized under the hood to compare the string objects based on their ASCII values, starting at the first character. It outputs `2` elements due to the argument passed in and those elements are the elements with the highest ASCII score. The first letters of each string are compared and the highest of the 4 letters are `'d'` and then `'c'`. Hence the output we get dignifies we're using the `Enumerale#max` method.
+
+---
+
+```ruby
+words = %w(cantaloupe apple durian)
+
+most_vowels = words.max_by { |word| word.count("aeiou") }
+
+p most_vowels
+```
+
+Outputs: "cantaloupe"
+
+Answer: `['max_by']`
+
+Description: `Enumerable#max_by` is passed a block when invoked, and returns the element from the calling collection for which the block returns the maximum value. It also takes an optional argument, `n`, which when given causes the method to return `n` number of maximum elements in an array sorted by the return value of the block. In this example the block is not utilizing the `<=>` method and instead sorting things using a different numberical value. Searching each string object for the instances of a vowel within it, then returning the string with the most vowels. This shows that the method being utilized here is the `Enumerable#max_by` method.
+
+---
+
+```ruby
+words = %w(cantaloupe apple durian bananas)
+
+shortest_longest = words.______ { |a, b| a.size <=> b.size }
+
+p shortest_longest
+```
+
+Outputs: ["apple", "cantaloupe"]
+
+Answer: `['minmax']`
+
+Description: `Enumerable#minmax` returns a 2 element array which contains both the minimum and maximum values in the calling collection. By default, the method will evaluate all elements with `<=>`. Alternatively, you can pass it a block to determine how elements should be compared. The block takes two arguments (the items to compare) and should return a value of `-1`, `1`, or `0`. In this example the `<=>` method is being utilized to compare the length of the strings. The output is an array containing the shortest and longest string found within the calling object. Therefore it can bededuced that `Enumerable#minmax` is the method being utilized.
+
+---
+
+```ruby
+words = %w(cantaloupe apple durian bananas)
+
+p words.______ { |word| word.count("a") }
+```
+
+Outputs: ["apple", "bananas"]
+
+Answer: `['minmax_by']`
+
+Description: `Enumerable#minmax_by` is passed a block when invoked. It then returns a two element array in which the first element is that for which the block returns the minimum value, and the second element is that for which the block returns the maximum value. In this example the `<=>` operator is not being utilized, instead a numerical value is being compared. Specifically the number of instances of `a` within each string object. The output gives us the string objects with the least and most instances of `a`, therefore it can be deduced that `Enumerable#minmax_by` is the method being utilized here.
