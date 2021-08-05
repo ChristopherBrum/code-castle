@@ -18,7 +18,7 @@ module Printable
   end
 
   def expand_window
-    print_centered("Please expand the terminal window ")
+    print_centered("Please expand the terminal window")
     set_margin
     loop do
       @@rows, @@columns = IO.console.winsize
@@ -35,8 +35,9 @@ end
 class Image
   include Printable
 
-  def initialize
+  def initialize(filename)
     @lines = []
+    File.foreach(filename) { |line| @lines << line.chomp }
   end
 
   def render
@@ -48,32 +49,10 @@ class Image
   attr_reader :lines
 end
 
-class Castle < Image
-  def initialize
-    @lines = [ "", "", "", "", "",
-"   /\\                                                        /\\   ",
-"  |  |                                                      |  |  ",
-" /----\\               WELCOME TO CODE CASTLE               /----\\ ",
-"[______]                                                  [______]",
-" |    |         _____                        _____         |    | ",
-" |[]  |        [     ]                      [     ]        |  []| ",
-" |    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    | ",
-" |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    | ",
-" |             |     |/'    ____..____    '\\|     |             | ",
-"  \\  []        |     |    /'    ||    '\\    |     |        []  /  ",
-"   |      []   |     |   |o     ||     o|   |     |  []       |   ",
-"   |           |  _  |   |     _||_     |   |  _  |           |   ",
-"   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |   ",
-"   |           |     |   |     (||)     |   |     |           |   ",
-"   |           |     |   |      ||      |   |     |           |   ",
-" /''           |     |   |o     ||     o|   |     |           ''\\ ",
-"[_____________[_______]--'------''------'--[_______]_____________]"
-    ]
-  end
-end
-
 class Game
   include Printable
+
+  attr_reader :player_name
 
   def initialize
     clear
@@ -82,7 +61,12 @@ class Game
 
   def play
     ready
-    Castle.new.render
+    display_welcome
+    player_name
+    loop do
+      ask_question
+      break
+    end
   end
 
   def ready
@@ -96,6 +80,28 @@ class Game
       set_margin
     end
     clear
+  end
+
+  def display_welcome
+    Image.new('images/castle.txt').render
+  end
+
+  def player_name
+    answer = nil
+    print_centered("What is your name, hero?")
+    set_margin
+    loop do
+      answer = gets.chomp
+      break unless answer.empty?
+      print_centered("Please enter a name")
+      set_margin
+    end
+    clear
+  end
+
+  def ask_question
+    Image.new('images/gargoyle.txt').render
+    print_centered("NOW HERO, YOU MUST ANSWER MY QUESTION")
   end
 end
 
