@@ -1,0 +1,6 @@
+Code Snippet,Output,Answer,Description
+"words = %w(cantaloupe apple durian bananas)
+
+p words.______ { |word| word.count(""a"") }","[""apple"", ""cantaloupe""]",['minmax'],"Description: `Enumerable#minmax` returns a 2 element array which contains both the minimum and maximum values in the calling collection. By default, the method will evaluate all elements with `<=>`. Alternatively, you can pass it a block to determine how elements should be compared. The block takes two arguments (the items to compare) and should return a value of `-1`, `1`, or `0`. In this example the `<=>` method is being utilized to compare the length of the strings. The output is an array containing the shortest and longest string found within the calling object. Therefore it can bededuced that `Enumerable#minmax` is the method being utilized."
+,,,
+,,,
