@@ -2,15 +2,19 @@
 
 ## To-do
 
-- [ ] **Ginni** Populate `Printable` module with tools/methods for formatting game
-- [ ] **Hunter** `YAML` file or other for storage of question content to be pulled into game (questions database)
-- [ ] **Chris** `YAML` file for enemies and story messages / text
-- [x] Get a bunch of quiz questions
+- Ginni - find images and populate images/ folder (start outline of orchestration engine?)
+- Hunter - populate csv files with question content, work on to_s
+- Chris - write out content for all "junctures" in gameplay
+- Pierre - push questions to main branch to complete question content
 - [ ] Generate 25 questions each:
   - [ ] Ginni - pointers, mutation, object passing
-  - [ ] Hunter - return values, truthiness, ruby methods
+  - [x] Hunter - return values, truthiness, ruby methods
   - [ ] Pierre - Ruby Collections 1-4, Ruby Collections Methods: each select map + enumerable
-  - [ ] Christopher - iterations, selection, transformation, nested data structures, Methods: sorting and comparison
+  - [x] Christopher - iterations, selection, transformation, nested data structures, Methods: sorting and comparison
+
+## Progress Meeting Notes
+
+- [8/6/2021](./meetings/08_6_21.md)
 
 ## Content Guidelines
 
@@ -55,30 +59,3 @@ Description: _short sentence explaining code snippet_
 - Write out any potential answers to the blank in the code snippet in an array
 - Description should contain short sentence explaining what the code snippet demonstrates
   - should be shown once user gets answer
-
-### How to store in database?
-
-```ruby
-# as a hash
-quiz_question = { question: ["______ 'hello world'"], ...}
-
-# as a question object
-
-class Quiz
-  def initialize
-    @questions = []
-  end
-end
-
-class Question
-  def initialize
-    @code_snippet = ["______ 'hello world'"]
-    @output = "Outputs: 'hello world' twice"
-    @answer = ['puts']
-    @description = "Syntactical Sugar, specifically shows how Ruby does not require parenthesis after a method call."
-  end
-end
-
-q1 = Question.new.show_question
-q1.check_answer
-```
