@@ -32,6 +32,9 @@ module Printable
   end
 end
 
+=begin
+ classes and functionality that follows are for testing purposes
+
 class Image
   include Printable
 
@@ -106,3 +109,4 @@ class Game
 end
 
 Game.new.play
+=end
