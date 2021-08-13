@@ -1,0 +1,119 @@
+---
+  villains:
+    - assassin
+    - bandit
+    - basilisk
+    - berserker
+    - bigfoot
+    - blob
+    - chimera
+    - chupacabra
+    - cthululu
+    - demon
+    - dragon
+    - executioner
+    - frankenstein's_monster
+    - gargoyle
+    - ghost
+    - ghoul
+    - giant
+    - giant_rat
+    - giant_spider
+    - goblin
+    - godzilla
+    - golem
+    - green_hag
+    - harpy
+    - hobgoblin
+    - hydra
+    - king_kong
+    - kraken
+    - loch_ness_monster
+    - mad_mage
+    - manticore
+    - medusa
+    - minotaur
+    - mummy
+    - ogre
+    - orc
+    - skeleton
+    - specter
+    - succubus
+    - troll
+    - vampire
+    - werewolf
+    - witch
+    - wyrmling
+    - zombie
+  villain_taunts:
+    - You hack and slashers will never get past me. Just try!
+    - This code will defeat you, just like all the others!
+    - I'm surprised you made it this far, but this code will be your end!
+    - How dare you breach our castle walls! This code shall be your downfall. Wa ha ha.
+    - You are no match for my code!
+    - Prepare to me my code, and thy doom!
+    - You've been lucky so far, but now's the time you face a real challenge. 
+    - This code spells the end for you!
+    - You will never take back Code Castle, this code shall crush you.
+    - Prepare to be crushed by the weight of my awesome coding riddle!
+    - You're good, but are you good enough to solve this???
+    - Do you actually believe you could solve my coding riddle?
+    - Don't make me laugh, my code problem will crush you!
+    - I have you right where I want you, and my code will finish you off.
+    - Prepare to feel the full wrath of my coding riddle!
+    - I laugh at the thought of you defeating my coding problem!
+    - You'll never stop us, the castle is ours!
+    - You have no chance to retake Code Castle, this riddle will destroy you!
+    - Sorry, but into each life a little rain must fall, and this code will be the storm that washes you away.
+    - It's foolish to come against me, my code will put you in your place.
+    - You'd turn back now if you knew what was good for you. My code shall crush you!
+    - My code will be last the thing you ever see.
+    - Code Castle will never be yours, you probably won't even be able to solve my coding riddle!
+    - You will suffer under the weight of my code! Wa ha ha ha.
+    - Turn back before it's too late. You'll never code your way through the castle.
+    - You've made it far enough, but my coding riddle will change that!
+    - My code will be the last thing you see!
+    - My code is going to have you for dinner.
+    - It was nice knowing you, but now it's time for you to be taken down by my code. 
+    - DEATH TO THOSE WHO OPPOSE BY CODE!
+  villain_intro: 
+    - Before you stands a
+    - From the shadows you can faintly see
+    - The hair on the back of your neck stand on end as you slowly turn around to face a
+    - 
+    -
+    -
+    -
+    -
+    -
+    -
+  lair_intros:
+    - The portcullis opens slowly with the gnargled grinding of gears and a dark entranceway is revealed. 
+    - Walking through the entranceway leads down a dim hallway to a large stone room, cobwebs dangling from the ceiling.
+    - In a shocked stupor you walk backwards into what appears to have been a great dining hall at one point, but is now is disrepair. Debris and bones litter the ground. 
+    - Rushing from the last chamber you push through a wooden door that opens to reveal the castles kitchen, black with soot and mold. 
+    - Examining the only other door from the kitchen leads into what miusty have been a pantry of some sort, which is now thick with the stench of vermin.
+    - In the skirmish you happen to put your foot through the wall, revealing a secret passage that leads behind the kitchen into darkness.
+    - 
+    -
+    -
+    -
+    
+  level:
+    defeat: "WAHAHAHAHA, Nice try but you'll have to do better than that!"
+    retry: "That's not the correct answer, lets try this again."
+    victory: "Nicely done! You successfully solved this coding riddle your foe has been defeated!"
+  rubies:
+    gain_first_ruby: "You collect a glittering Ruby from the lair of your foe."
+    gain_another_ruby: "You collect another glittering Ruby from your defeated foe."
+    total_rubies: "Magical rubies collected: "
+  boss_winner: >
+    Congratulations Code Warrior, you are victorious! 
+    You have fought your way through the foes of Code Castle and defeated their coding riddles valiantly!  
+    The magic rubies you've collected will be enough to banish this evil from the castle for eternity!
+    The Kingdom is once again safe, thanks to you. 
+  boss_loser: >
+    Today is a dark day for the Kingdom of Code Castle. 
+    Tis true that you battled bravely, the dark forces that have taken over Code Castle have prevailed. 
+    The magic rubies that you've collected were not plentiful enough to banish the evil that has overrun Code Castle. 
+    Perhaps, next time, things will be different...
