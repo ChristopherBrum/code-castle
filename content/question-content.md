@@ -1,3 +1,4 @@
+
 # Quiz Questions for Game
 
 ---
@@ -453,7 +454,7 @@ loop do
   counter += 1
 end
 
-p array 
+p array
 p evens
 ```
 
@@ -478,7 +479,7 @@ loop do
   counter += 1
 end
 
-p array 
+p array
 p evens
 ```
 
@@ -597,7 +598,7 @@ Description: Ruby uses the comparison method `<=>` to evaluate comparisons betwe
 ---
 
 ```ruby
-friends = { "Ashley" => { job: 'designer', birthday: '8/23' }, 
+friends = { "Ashley" => { job: 'designer', birthday: '8/23' },
             "Joe" => { job: 'bartender', birthday: '7/12' },
             "Sue" => { job: 'producer', birthday: '2/22' }}
 
@@ -863,3 +864,424 @@ Outputs: ["apple", "bananas"]
 Answer: `['minmax_by']`
 
 Description: `Enumerable#minmax_by` is passed a block when invoked. It then returns a two element array in which the first element is that for which the block returns the minimum value, and the second element is that for which the block returns the maximum value. In this example the `<=>` operator is not being utilized, instead a numerical value is being compared. Specifically the number of instances of `a` within each string object. The output gives us the string objects with the least and most instances of `a`, therefore it can be deduced that `Enumerable#minmax_by` is the method being utilized here.
+
+---
+
+```ruby
+string = "slowly but surely!"
+
+p string ______
+```
+Outputs:
+`surely!`
+
+Answers:
+`[[11..-1], [11..17], [11, 7]]`
+
+Description:
+Each individual character in a string can be referenced using an integer based index number. The first character in a string is said to be at index 0. Each subsequent character has an index that is increased by 1.
+
+We can use the `String#[]` method to isolate individual elements, of groups of elements.
+
+---
+```ruby
+animals = [["dog", "cat"], ["whale", "shark"], ["seagull", "robin"]]
+
+p animals ______[3, 4]
+```
+
+Outputs: `['gull']`
+
+Answer: `[[2]]`
+
+Description:
+Arrays also use an integer based index number to reference each element within the collection. Similarly to strings, we can use the `Array#[]` method to access individual elements or sub-groups of elements.
+
+---
+```ruby
+colors = {:Rose => "red",   
+          :Lily => "purple",   
+          :Marigold => "yellow",   
+          :Jasmine => "white"}  
+
+flowers = colors.______
+p flowers
+
+```
+Outputs: `[:Rose, :Lily, :Marigold, :Jasmine]`
+
+Answer: `keys`
+
+Use the `Hash#keys` method to return an array containing all the keys in the calling hash. Use the `Hash#values` method to return an array containing all the values in the calling hash. Each individual key and value, then, can be accessed via it's index within the array.
+
+---
+```ruby
+hash = { 1 => 'one', 2 => 'two', 3 => 'three'}  
+
+p hash ______
+```
+Outputs: `'r'`
+
+Answer: `[[3][2]]`
+
+Description:
+Hashes are data structures that use key-value pairs to order objects instead of an integer based index. Either the key or the value in a hash can be any type of Ruby object. Each key in a hash must be unique, but values can be duplicated.
+
+We can access a particular value by using it's associated key with `Hash#[]`
+
+
+---
+
+```ruby
+letters = "abcdef"  
+
+p letters.chars.______("-")   
+```
+
+Outputs: `"a-b-c-d-e-f"`
+
+Answer: `join`
+
+Description:
+`Array#join` returns a string with the elements of the array joined together. You can pass it a delimiter which will be input between each element in the calling array once it is converted to a string.
+
+---
+
+```ruby
+fruits = [[:apple, 4], [:banana, 2], [:orange, 3]]  
+
+p fruits.______
+```
+
+Outputs: `{:apple=>4, :banana=>2, :orange=>3}`
+
+Answer: `to_h`
+
+Description:
+`Array#to_h` is usually invoked by a two-dimensional array in which each sub-array has two elements, and returns a hash in which each sub-array's elements are the collection's key-value pairs. If you need to convert an array of a different data structure to a hash, you can pass this method a block which returns a two-element array, and these elements will form the key-value pairs in the new hash.
+
+
+---
+
+```ruby
+string = "Fix my tupo!"
+string ______ = 'y'
+puts string       
+```
+
+Outputs: `"Fix my typo!"`
+
+Answer: `[[8]]`
+
+Description:
+You can change individual element values within a collection by using a setter method (`[]=`), also known as an "element assigner method". Note that this is a destructive action that permanently modifies the collection. To change the value of a specific character within a string, use `String#[]` combined with the assignment operator.
+
+
+---
+```ruby
+[1,2,3,4,5].each do |num|
+  p "#{num}!"
+  e * 3
+end
+
+# What will this return?
+```
+Outputs:
+`"1!2!3!4!5!"`
+
+Answers:
+`[[1,2,3,4,5]]`
+
+Description:
+`each` accomplishes iteration only. Each element in the calling collection is passed into the block on each iteration and assigned to (one of) the block parameter(s). `each` always returns the original collection, and does not utilize the return value of the block. If you need to use that return value, you need to capture it in a variable.
+
+---
+```ruby
+array = [1,2,3,4,5]
+
+array.map { |num| num * 5 }
+
+# What will this return?
+```
+
+Answer:
+`[[5,10,15,20,25]]`
+
+Description:
+`map` returns a new array of transformed collection elements. Note that it always returns an array, even when the calling collection is a hash. On each iteration through the collection, the current element is passed to the block and assigned to (one of) the block parameter(s). Then, `map` will use the return value of the block for transformation, by placing the return value of the block into a new collection for each element in the calling collection.
+
+
+---
+```ruby
+values = [1, 2, 3].map do |num|
+  puts num
+  num.odd?
+end
+
+# What does this return?
+```
+Outputs:
+```ruby
+1
+2
+3
+```
+Answer:
+`[[true, false, true]]`
+
+Description:
+`map` returns a new array of transformed collection elements. Note that it always returns an array, even when the calling collection is a hash. On each iteration through the collection, the current element is passed to the block and assigned to (one of) the block parameter(s). Then, `map` will use the return value of the block for transformation, by placing the return value of the block into a new collection for each element in the calling collection.
+
+---
+```ruby
+ages = [31, 22, 41]
+people = ["Bob", "Alice", "Carol"]
+
+people.______.with_index do |name, idx|
+  [name, ages[idx]]
+end
+
+p people
+
+```
+Outputs:
+`[["Bob", 31], ["Alice", 22], ["Carol", 41]]`
+
+Answer:
+`map!`
+
+Description:
+`map!` returns the very same object it was called upon, except mutated. It is a destructive version of the `map` method. On each iteration through the collection, the current element is passed to the block and assigned to the block parameter. Then, `map!` will use the return value of the block to mutate the calling object.
+
+---
+
+```ruby
+[1, 2, 3].select do |num|
+  num + 1
+  puts num
+end
+
+# What will this return?
+```
+Outputs:
+```ruby
+1
+2
+3
+```
+
+Answer:
+`[[]]`
+
+Description:
+`select` is a good choice for the process of selection. `select` will return a new collection of all the elements that have returned a truthy value when passed to the block.
+
+In this case, the return value of the block passed to `select` is always `nil`, which is a falsey value in Ruby. Therefore the `select` method returns an empty array.
+
+
+---
+
+```ruby
+array = [2, 3, 4, 1, 8, 9]
+
+p array.select { |num| num. ______ }
+
+```
+Outputs `[2, 4, 8]`
+
+Answer: `even?`
+
+Description:
+`select` is a good choice for the process of selection. `select` will return a new collection of all the elements that have returned a truthy value when passed to the block.
+
+Note that if there is no way for the block to return a `false` or `nil` value, all the elements in the calling collection will get selected. It's best to use a conditional (which will return nil if it isn't run) or expression that evaluates to some kind of Boolean.
+
+---
+
+```ruby
+array = [2, 3, 4, 1, 8, 9]
+
+p array.______ { |num| num.odd? }
+
+```
+Outputs `[2, 4, 8]`
+
+Answer: `reject`
+
+Description: `reject` works the same way as `select`, except it will select the values of the calling object
+for which the block evaluates to `false`.
+
+
+---
+
+```ruby
+values = [nil, "blue", 22, 10, "red"]
+
+values.______ { |e| e == nil }
+
+```
+Returns: `true`
+
+Answer: `any?`
+
+Description:
+`any?` is good for determining if any items in a collection meet a certain criteria. It is passed a block when invoked, and will return `true` if the block ever returns a value other than `false` or `nil`. If no block is given, Ruby will has an implicit block { |obj| obj }, that will cause any? to return true if at least one of the objects in the collection are false or nil. A pattern can also be supplied (with no block) as an argument, and the method will return whether or not the pattern matches with any of the elements in the collection.
+
+---
+```ruby
+strings = %w(a b c d e f g)
+
+strings.______ { |str| str.size == 1 }
+
+```
+Returns: `true`
+
+Answer: `all?`
+
+Description:
+`all?` is good for determining if all the items in a collection meet a certain criteria. It is passed a block when invoked, and will return true only if the block never returns a `false` or `nil`.
+
+As with `any?` you can call it without a block for the implied { |obj| obj } evaluation or provide it with a pattern argument to match. In either case, the method will return `true` only if all the elements in the calling collection match the given pattern or return a truthy value in the implied block.
+
+
+---
+```ruby
+%w(ant bear cat).______ { |word| word.length >= 4 }
+
+```
+Returns: `false`
+
+Answer: `all?`
+
+Description:
+`all?` is good for determining if all the items in a collection meet a certain criteria. It is passed a block when invoked, and will return true only if the block never returns a `false` or `nil`.
+
+As with `any?` you can call it without a block for the implied { |obj| obj } evaluation or provide it with a pattern argument to match. In either case, the method will return `true` only if all the elements in the calling collection match the given pattern or return a truthy value in the implied block.
+
+---
+```ruby
+result = []
+
+("a".."d").to_a.each_with_index do |letter, idx|
+  result << ______
+end
+
+p result
+```
+Outputs: `[["a", 1], ["b", 2], ["c", 3]]`
+
+Answer: `[[letter, idx + 1]]`
+
+Description:
+`each_with_index` is best used when you need to iterate over a collection and also need to track, use, or manipulate either the index number of each element, or the iteration number (index can serve in place of both). It works similarly to `each`, except a block parameter is assigned to the index number of the current element in the calling collection.
+
+When `each_with_index` is called on a hash, the first argument in the block becomes an array representing each key-value pair, and the second argument is the index number.
+
+---
+```ruby
+p [:foo, :bar, :jazz].each_with_object(______) do |item, hash|
+  hash[item] = item.to_s.upcase
+end
+
+```
+Outputs: `{:foo=>"FOO", :bar=>"BAR", :jazz=>"JAZZ"}`
+
+Answers: `[{}, Hash.new]`
+
+Description:
+`each_with_object` takes both a block and an arbitrary object as arguments. It iterates over the given block for each element in the calling collection, and returns the object that was initially given as an argument. This can be very useful in converting data structures that aren't inherently structured similarly, giving you a way to manipulate two collections at once.
+
+---
+```ruby
+albums = [["Pink Floyd", "Dark Side of the Moon"],
+          ["Michael Jackson", "Thriller"]
+          ["Van Halen", "1984"]
+          ["Pink Floyd", "The Wall"]
+          ["Nirvana", "Nevermind"]
+
+p albums.______([]) do |album, playlist|
+  playlist << album if album.include?("Pink Floyd")
+end
+
+```
+Outputs: `[["Pink Floyd", "Dark Side of the Moon"],["Pink Floyd", "The Wall"]]`
+
+Answers: `[each_with_object, each.with_object]`
+
+Description:
+`each_with_object` takes both a block and an arbitrary object as arguments. It iterates over the given block for each element in the calling collection, and returns the object that was initially given as an argument. This can be very useful in converting data structures that aren't inherently structured similarly, giving you a way to manipulate two collections at once.
+
+---
+```ruby
+range = (0..10)
+
+p range.first ______
+
+```
+Outputs: `[0, 1]`
+
+Answer: `(2)`
+
+Description:
+`first` can return either the first element in a collection or a group of the first elements in a collection, if the number of elements desired is given as an argument. If the calling collection is empty, the method will return `nil`, unless the optional argument is given in which case it will return an empty array.
+
+`first` always returns these items in the form an array, even if the calling collection is a hash.
+
+---
+```ruby
+{ a: "ant", b: "bear", c: "cat" }.include?(______)
+
+```
+Returns: `true`
+
+Answers: `[:a, :b, :c]`
+
+Description:
+Good for determining if a collection contains a particular object as a member, `include?` will return `true` if the object supplied as an argument is considered equal (using `==`) to any elements in the calling collection.
+
+When called on a hash, only checks the values of the key value pairs to see if the argument exists within them. `Hash#include?` is essentially an alias for `Hash#key?` or `Hash#has_key?`
+
+---
+```ruby
+puts "yay" if [1, 2, 3].all? do |i|
+  (1..9).______(i)
+end
+
+```
+Outputs: `'yay'`
+
+Answers: `include?`
+
+Description:
+Good for determining if a collection contains a particular object as a member. `include?` will return `true` if the object supplied as an argument is considered equal (using `==`) to any elements in the calling collection.
+
+When called on a hash, only checks the values of the key value pairs to see if the argument exists within them. `Hash#include?` is essentially an alias for `Hash#key?` or `Hash#has_key?`.
+
+---
+
+```ruby
+numbers = (1..25).to_a
+
+p numbers.partition { |n| n.______? }
+
+```
+Outputs: `[[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25], [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]]`
+
+Answer: `odd?`
+
+Description:
+Useful if you need to split a collection into two sub-groups based on some criteria. `partition` is passed a block and returns two arrays, nested within a larger encompassing array. The first array will contain those elements within the calling collection for whom the block returns a truthy value, and the second array will contain those elements within the calling collection for whom the block returns `false` or `nil`.
+
+---
+```ruby
+numbers = (1..25).to_a
+
+p numbers.______ { |n| n % 3 == 0 }
+
+```
+Outputs: `[[3, 6, 9, 12, 15, 18, 21, 24], [1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 22, 23, 25]]`
+
+Answer: `partition`
+
+Description:
+Useful if you need to split a collection into two sub-groups based on some criteria. `partition` is passed a block and returns two arrays, nested within a larger encompassing array. The first array will contain those elements within the calling collection for whom the block returns a truthy value, and the second array will contain those elements within the calling collection for whom the block returns `false` or `nil`.
