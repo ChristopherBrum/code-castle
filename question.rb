@@ -27,4 +27,23 @@ class Question
         @@questions << q
       end
   end
+
+  def to_s
+    puts "DESCRIPTION: \n \n #{@description}"
+    puts '========================'
+    puts "CODE SNIPPET: \n \n #{@code_snippet}"
+    puts '========================'
+    puts "CODE SNIPPET: \n \n #{@output}"
+  end
+
+  def correct_answer?(input)
+    answer.include?(input)
+  end
 end
+
+Question.import
+
+# Question.all.each{|q| puts q}
+
+x =  Question.all.first
+p x.correct_answer?("object_id")
