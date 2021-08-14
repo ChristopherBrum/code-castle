@@ -2,7 +2,8 @@ class Question
   @@questions = []
   attr_accessor :code_snippet, :output, :return_value, :answer, :description
 
-  def initialize(cs, o, rv, a, d)
+  def initialize(id, cs, o, rv, a, d)
+    @id = id
     @code_snippet = cs
     @output = o
     @return_value = rv
@@ -18,19 +19,22 @@ class Question
     require 'csv'
     file = File.read(Dir.glob('../content/*.csv').first)
     csv = CSV.parse(file, :headers => true, :encoding => 'ISO-8859-1')
-      csv.each do |row|
+      csv.each_with_index do |row, i|
+        id = i
         cs = row['Code Snippet']
         o = row['Output']
         rv = row['Return Value']
         a = row['Answer']
         d = row['Description']
 
-        q = Question.new(cs, o, a, d)
+        q = Question.new(id, cs, o, rv, a, d)
         @@questions << q
       end
   end
 
   def to_s
+    puts "ID: #{@id}"
+    puts '========================'
     puts "DESCRIPTION: \n \n #{@description}"
     puts '========================'
     puts "CODE SNIPPET: \n \n #{@code_snippet}"
