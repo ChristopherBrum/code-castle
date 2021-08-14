@@ -40,10 +40,3 @@ class Question
     answer.include?(input)
   end
 end
-
-Question.import
-
-# Question.all.each{|q| puts q}
-
-x =  Question.all.first
-p x.correct_answer?("object_id")

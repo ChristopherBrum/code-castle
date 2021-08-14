@@ -2,18 +2,23 @@
 
 ## To-do
 
-- Ginni - find images and populate images/ folder (start outline of orchestration engine?)
-- Hunter - populate csv files with question content, work on to_s
-- Chris - write out content for all "junctures" in gameplay
-- Pierre - push questions to main branch to complete question content
-- [ ] Generate 25 questions each:
-  - [ ] Ginni - pointers, mutation, object passing
-  - [x] Hunter - return values, truthiness, ruby methods
-  - [ ] Pierre - Ruby Collections 1-4, Ruby Collections Methods: each select map + enumerable
-  - [x] Christopher - iterations, selection, transformation, nested data structures, Methods: sorting and comparison
+- Questions:
+  - add separate attributes for output and return
+  - Continue csv import
+  - Continue on question to_s
+- Text Content:
+  - Complete villain intros
+  - Complete lair intros
+- Images:
+  - Find intro / victory / defeat / boss images
+- Organize Repository:
+  - Models folder: each class or module (.rb file)
+  - Content folder: all content (text files, text images, questions csv)
+- Group session to implement basic functionality for game orchestration engine
 
 ## Progress Meeting Notes
 
+- [8/13/2021](./meetings/08_13_21.md)
 - [8/6/2021](./meetings/08_6_21.md)
 
 ## Content Guidelines
