@@ -15,7 +15,7 @@ class Question
 
   def self.import
     require 'csv'
-    file = File.read('questions.csv')
+    file = File.read(Dir.glob('../content/*.csv').first)
     csv = CSV.parse(file, :headers => true, :encoding => 'ISO-8859-1')
       csv.each do |row|
         cs = row['Code Snippet']
