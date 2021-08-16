@@ -168,3 +168,4 @@ credit_card = '1234-1234-1234-1234'
 puts redact_information(credit_card)
 puts credit_card",#1234'` followed by `'#1234',,"[""string [0...string.length - 4] = '#'""]","By using all the various ways of individual element reference available to use for collections such as strings and arrays, we can mutate whole sections of these collections through element reassignment. Here we take a long string representing a credit card number and try to the sensitive information better for display. In doing so, however, we permanently modify the original string and lose important data."
 Name two String methods that mutate the caller and do not contain an ! in their names.,,,"['clear', 'replace', 'insert', 'concat', 'prepend', '<<', '[]=']","While it is a convention that most mutating methods will be named with a `!`, there are some that are not. It's good to be aware of them so you don't wind up with unexpected behavior."
+

@@ -1,5 +1,6 @@
 class Question
   @@questions = []
+
   attr_accessor :code_snippet, :output, :return_value, :answer, :description
 
   def initialize(id, cs, o, rv, a, d)
@@ -7,6 +8,7 @@ class Question
     @code_snippet = cs
     @output = o
     @return_value = rv
+
     @answer = a
     @description = d
   end
@@ -48,3 +50,4 @@ class Question
     answer.include?(input)
   end
 end
+
