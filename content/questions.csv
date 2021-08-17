@@ -1,6 +1,171 @@
-Code Snippet,Output,Answer,Description
-"words = %w(cantaloupe apple durian bananas)
+Code Snippet,Output,Return Value,Answer,Description
+"a = 'string'
+a_before_reassignment = a.______
+a = 'a different string'
+a_after_reassignment = a.______
+a_before_reassignment == a_after_reassignment",,true,['object_id'],"variable reassignment is always non-mutating, because it causes the variable to point to a _new_ object, rather than changing the one it previously referenced."
+"def make_uppercase(string)
+  string = string.______
+  string
+end
 
-p words.______ { |word| word.count(""a"") }","[""apple"", ""cantaloupe""]",['minmax'],"Description: `Enumerable#minmax` returns a 2 element array which contains both the minimum and maximum values in the calling collection. By default, the method will evaluate all elements with `<=>`. Alternatively, you can pass it a block to determine how elements should be compared. The block takes two arguments (the items to compare) and should return a value of `-1`, `1`, or `0`. In this example the `<=>` method is being utilized to compare the length of the strings. The output is an array containing the shortest and longest string found within the calling object. Therefore it can bededuced that `Enumerable#minmax` is the method being utilized."
-,,,
-,,,
+a = 'defeat monsters'
+
+puts make_uppercase(a)
+puts a",DEFEAT MONSTERS'` then `'defeat monsters',,['upcase'],Copies of objects can be created within a method if we pass objects into methods tht contain reassignment statements. Acting on a reference that has been passed to a method as an argument with a non-mutating method does not mutate the object that was passed as an argument.
+"def pluralize(string)
+  string ______ 's'
+  string
+end
+
+a = 'programmer'
+b = pluralize(a)
+
+a == b",,false,"['+=', '= string +']","Assignment operators such as `+=`, `-=`, `*=`, etc can also create a copy of an object passed to a method as an argument. Because they constitute reassignment, these are also considered non- mutating. The code `a == b` returns `false` because `a` references the original string object `'programmer'` while `b` references the string object `'programmers'` which was returned by the `+` method and reassigned to `string` within `pluralize`"
+"def emphasize(string)
+  string = ______
+end
+
+a = 'code with intent'
+puts emphasize(a)
+puts a",CODE WITH INTENT'` followed by `'CODE WITH INTENT',,['upcase'],"The only time in which reassignment can mutate the original object referenced by the variable is when that same object is returned by the expression to the right of the assignment operator. Mutating methods frequently return `self` (this same object), so in this case the same object is reassigned back to `string"
+Methods can mutuate in one of two ways. Either with respect to their ______ or with respect to their ______.,,,"['arguments', 'caller']",A method that mutates with respect to its arguments is one that mutates an object that's passed to it when invoked. A method that mutates the caller is one that mutates the calling object itself. The latter is more common than the former. Mutating methods are often demarcated by `!` at the end of their name in Ruby documentation.
+"def change_first_element(array)
+  ______
+  array
+end
+
+a = [1, 2, 3, 4]
+change_first_element(a)
+p a","[0, 2, 3, 4]",,['array[0] = 0'],"Indexed assignment, when a single element in a collection is reassigned, is mutating even though it looks like a regular assignment statement. This is because the new object created by the reassignment is only on the level of a single element _within_ the collection. The reference to the collection object as a whole remains the same."
+"def pluralize(string)
+  string << 's'
+  string
+end
+
+a = 'programmer'
+b = pluralize(a)
+
+a == b",,true,['<<'],"The shovel concatenation operator (`<<`) functions similarly to `+=` with string objects, _except_ that it is a mutating method whereas `+=` is not. Here `a == b` will output `true` because both `a` and `b` will point to the same object in memory."
+"def change_object(string)
+  ______
+end
+
+a = 'change me inside the method'
+
+puts change_object(a)
+puts a",'CHANGE ME INSIDE THE METHOD'` then `'CHANGE ME INSIDE THE METHOD',,['string.upcase!'],"A language is said to be _pass by referece_ when a _reference_ to the actual object in memory is passed to a method when we pass methods their arguments. Access to this reference allows methods to permanently change the original objects in memory from within the method's scope. Here we are able to permanently change the original object referenced by `a` by calling a mutating method, `upcase!` on it."
+"def change_object(string)
+  ______
+end
+
+a = 'change me inside the method'
+
+puts change_object(a)
+puts a",CHANGE ME INSIDE THE METHOD'` THEN `'change me inside the method',,['string.upcase'],"A _pass by value_ language is one that passes a _copy_ of any given object to the method as an argument instead of a reference to the original object. In a pass by value language, we cannot mutate arguments from within the scope of a method. Ruby is not pass by value, but it can act as if it is, when a copy is generated by a method that is not mutating. Generally, non-mutating methods return some kind of newly created object, which we must capture in a variable so we can utilize them later."
+"a = 'hey there!'
+a = b
+c = 'hey there!'
+
+puts a.___(b)
+puts a.___(c)",`true` followed by `false`,,equal?,"In Ruby, variables are containers that house references to objects in memory. These objects are assigned to variables using an assignment statement. Once assigned, variables are said to reference the assigned object. If you assign one variable to another, both of those variables will reference the same object in memory. You can use the `.equal?` method to determine if two values are, in fact, the same object in memory. `.equal?` will only return `true` if the actual objects are the same, `false` otherwise, even if the values match, as is the case when we compare `a` and `c` above."
+Name one kind of immutable object in Ruby,,,"['integers', 'floats', 'true', 'false', 'nil', 'ranges']","An immutable object is one that cannot be changed. Ostensibly, this means that no mutating methods are defined for immutable objects. Note that because numerical objects in Ruby are immutable, any arithmetic operations we perform will always return a new value, and never mutate the original."
+"a = 'how many of me are there?'
+b = 'how many of me are there?'
+c = 'how many of me are there?'
+d = 'how many of me are there?'
+
+match = a.object_id
+
+same_objects_in_mem = [b, c, d].select { |obj| obj.object_id == match }
+
+p same_objects_in_mem
+# => ______",,,[],"Just because values are equal does not necessarily mean they are the same object in memory. All four string objects initialized above are different objects in memory. Therefore, only one of them `a` will have an object id that matches that of `a`. Therefore none of the strings will be selected and an empty array will be output."
+"colors = ['blue', 'green']
+______ = colors
+puts a
+puts b
+
+a = 'purple'
+puts array","'blue'` followed by `'green'` followed by `['purple', 'green']",,"['a, b']","We can use parallel assignment to assign the elements in an array to different variables. The syntax is `var_1, var_2 = [ele_1, ele_2]`. Be warned, a collection as a whole can be mutated through a variable that references one of its elements. Here, when we reassign `a` and change `'blue'` to `'purple'` we mutate the array `colors`."
+"fruits = ['apple', 'banana', 'cantaloupe', 'durian']
+fruits.freeze
+______
+p fruits","['apple!!!', 'banana', 'cantaloupe', 'durian']",,['fruits[0] << !!'],"Freezing a collection only works on the higher level of the collection as a whole. Because the individual elements are distinct object references on their own, they are not frozen and can still be mutated. This results in a permanent change to the collection as a whole."
+"colors = ['red', 'yellow']
+fruits = ['apple', 'banana']
+stuff = [colors, fruits]
+p stuff
+
+______
+p stuff","[['red', 'yellow'], ['apple', 'banana']]` followed by `[['red', 'purple'], ['apple', 'banana']]",,['fruits[1] = 'purple'],"Nested collections have many levels of variable reference, all of which can be assigned to different variables. Changing anything on a lower level, such as the `fruits[1]` element here which is changed from `'yellow'` to `'purple'` can mutate the collection as a whole."
+"def shout(string)
+  ______
+  ______
+  string
+end
+
+a = 'why are we shouting'
+
+puts shout(a)
+puts a",WHY ARE WE SHOUTING!!!'` followed by `'WHY ARE WE SHOUTING',,"['string.upcase!', ""string += '!!!'""]","The link between method argument and the original argument passed in can be broken at any point during the method execution. Here we pass in the string `'why are we shouting'` which gets mutated by the `upcase!` method. However, then we try to apply `'!!!'` with the `+=` reassignment operator, which returns a new value. Therefore, the original string never gets the `'!!!'` concatenated, as shown by the output."
+"def redact_information(string)
+  ______
+end
+
+credit_card = '1234-1234-1234-1234'
+
+puts redact_information(credit_card)
+puts credit_card",'#1234'` followed by `'#1234',,"[""string [0...string.length - 4] = '#'""]","By using all the various ways of individual element reference available to use for collections such as strings and arrays, we can mutate whole sections of these collections through element reassignment. Here we take a long string representing a credit card number and try to the sensitive information better for display. In doing so, however, we permanently modify the original string and lose important data."
+Name two String methods that mutate the caller and do not contain an ! in their names.,,,"['clear', 'replace', 'insert', 'concat', 'prepend', '<<', '[]=']","While it is a convention that most mutating methods will be named with a `!`, there are some that are not. It's good to be aware of them so you don't wind up with unexpected behavior."
+Name four Array methods that mutate the caller and do not contain an ! in their names.,,,"['<<', '[]=', 'append', 'clear', 'concat', 'delete', 'delete_at', 'delete_if', 'fill', 'replace', 'insert', 'keep_if', 'pop', 'prepend', 'unshift', 'push', 'shift']","In Ruby, variables are containers that house references to objects in memory. These objects are assigned to variables using an assignment statement. Once assigned, variables are said to reference the assigned object. If you assign one variable to another, both of those variables will reference the same object in memory. You can use the `.equal?` method to determine if two values are, in fact, the same object in memory. `.equal?` will only return `true` if the actual objects are the same, `false` otherwise, even if the values match, as is the case when we compare `a` and `c` above."
+Name one kind of immutable object in Ruby,,,"['integers', 'floats', 'true', 'false', 'nil', 'ranges']","An immutable object is one that cannot be changed. Ostensibly, this means that no mutating methods are defined for immutable objects. Note that because numerical objects in Ruby are immutable, any arithmetic operations we perform will always return a new value, and never mutate the original."
+"a = 'how many of me are there?'
+b = 'how many of me are there?'
+c = 'how many of me are there?'
+d = 'how many of me are there?'
+
+match = a.object_id
+
+same_objects_in_mem = [b, c, d].select { |obj| obj.object_id == match }
+
+p same_objects_in_mem
+# => ______",???,,[],"Just because values are equal does not necessarily mean they are the same object in memory. All four string objects initialized above are different objects in memory. Therefore, only one of them `a` will have an object id that matches that of `a`. Therefore none of the strings will be selected and an empty array will be output."
+"colors = ['blue', 'green']
+______ = colors
+puts a
+puts b
+
+a = 'purple'
+puts array","'blue'` followed by `'green'` followed by `['purple', 'green']",,"['a, b']","We can use parallel assignment to assign the elements in an array to different variables. The syntax is `var_1, var_2 = [ele_1, ele_2]`. Be warned, a collection as a whole can be mutated through a variable that references one of its elements. Here, when we reassign `a` and change `'blue'` to `'purple'` we mutate the array `colors`."
+"fruits = ['apple', 'banana', 'cantaloupe', 'durian']
+fruits.freeze
+______
+p fruits","['apple!!!', 'banana', 'cantaloupe', 'durian']",,['fruits[0] << !!'],"Freezing a collection only works on the higher level of the collection as a whole. Because the individual elements are distinct object references on their own, they are not frozen and can still be mutated. This results in a permanent change to the collection as a whole."
+"colors = ['red', 'yellow']
+fruits = ['apple', 'banana']
+stuff = [colors, fruits]
+p stuff
+
+______
+p stuff","[['red', 'yellow'], ['apple', 'banana']]` followed by `[['red', 'purple'], ['apple', 'banana']]",,['fruits[1] = 'purple'],"Nested collections have many levels of variable reference, all of which can be assigned to different variables. Changing anything on a lower level, such as the `fruits[1]` element here which is changed from `'yellow'` to `'purple'` can mutate the collection as a whole."
+"def shout(string)
+  ______
+  ______
+  string
+end
+
+a = 'why are we shouting'
+
+puts shout(a)
+puts a",'WHY ARE WE SHOUTING!!!'` followed by `'WHY ARE WE SHOUTING',,"['string.upcase!', ""string += '!!!'""]","The link between method argument and the original argument passed in can be broken at any point during the method execution. Here we pass in the string `'why are we shouting'` which gets mutated by the `upcase!` method. However, then we try to apply `'!!!'` with the `+=` reassignment operator, which returns a new value. Therefore, the original string never gets the `'!!!'` concatenated, as shown by the output."
+"def redact_information(string)
+  ______
+end
+
+credit_card = '1234-1234-1234-1234'
+
+puts redact_information(credit_card)
+puts credit_card",#1234'` followed by `'#1234',,"[""string [0...string.length - 4] = '#'""]","By using all the various ways of individual element reference available to use for collections such as strings and arrays, we can mutate whole sections of these collections through element reassignment. Here we take a long string representing a credit card number and try to the sensitive information better for display. In doing so, however, we permanently modify the original string and lose important data."
+Name two String methods that mutate the caller and do not contain an ! in their names.,,,"['clear', 'replace', 'insert', 'concat', 'prepend', '<<', '[]=']","While it is a convention that most mutating methods will be named with a `!`, there are some that are not. It's good to be aware of them so you don't wind up with unexpected behavior."
+
