@@ -1,23 +1,38 @@
+require 'pry'
+require 'yaml'
 require_relative 'image'
 require_relative 'printable'
 require_relative 'question'
+require_relative 'villains'
+
+=begin
+Note: Game class will not function properly until Player class file
+is available. Therefore, all Player dependent code is commented out
+for the time being to allow testing
+=end
 
 class Game
+  MESSAGES = YAML.load_file('../content/messaging.yml')
+
+  include Printable
+
   attr_reader :player
   attr_accessor :type
   
   def initialize
-    @player = Player.new
+    clear
+    #@player = Player.new
     @type = nil
   end
   
   
   def play
     loop do
+      clear
       display_welcome
       assign_game_type
       play_inner_loop
-      won? ? display_winning_message : display_losing_message
+      display_game_over
       break unless play_again?
     end
     
@@ -26,59 +41,75 @@ class Game
   
   def ask_game_type
     answer = nil
+    print_centered "Would you like to play a (s)hort (m)edium or (l)ong game?"
     loop do 
-      puts "Would you like to play a (s)hort (m)edium or (l)ong game?"
+      set_margin
       answer = gets.chomp.downcase
-      break if answer.start_with?("s") || answer.start_with?("m") || \
-        answer.start_with?("l")
+      break if valid_game_type?(answer)
+      print_centered "Please enter 's', 'm' or 'l'."
     end
-    answer = answer[0]
-    hash = { "s" => "short", "l" => "long", "m" => "medium" }
-    hash[answer]
+    answer[0]
   end
   
+  def valid_game_type?(str)
+    str.start_with?("s") || 
+    str.start_with?("m") ||
+    str.start_with?("l")
+  end
+
   def display_welcome
-    puts "Welcome to the Code Castle, #{player.name}!"
-    Image.new('images/castle.txt').render
+    Image.new('../content/images/castle.txt').render
+    # Do we add a welcome message that we can import from the .yml?
+    # print_centered "Welcome, #{player.name}!"
+    puts
   end
   
   def assign_game_type
     case ask_game_type
-    when "short" then self.type = Short.new
-    when "medium" then self.type = Medium.new
-    when "long" then self.type = Long.new
+    when "s" then self.type = Short.new
+    when "m" then self.type = Medium.new
+    when "l" then self.type = Long.new
     end
   end
-      
+  
+  # randomly generate results until gameplay / keeping score is implemented
   def won?
     [true, false].sample
+    # TODO: implement a way to see if player has won
   end
   
-  def display_losing_message
-    puts "Sorry #{player.name}, you lost! You are not worthy of the Code Castle!"
-  end
-      
-  def display_winning_message
-    puts "Congratulations, #{player.name}! You win! Here are the keys to the CODE CASTLE!"
+  # TODO: figure out a way to break up longer messages for better formatting
+  def display_game_over
+    clear
+    if won?
+      Image.new('../content/images/victory.txt').render
+      print_centered(MESSAGES['boss_winner'])
+    else
+      Image.new('../content/images/rip.txt').render
+      print_centered(MESSAGES['boss_loser'])
+    end
+    puts
   end
       
   def play_again?
-    puts "Would you like to play again? (y/n)"
+    print_centered "Would you like to play again? (y/n)"
     answer = nil
     loop do
+      set_margin
       answer = gets.chomp
       break if ['y', 'n'].include?(answer.downcase)
-      puts "Please enter 'y' or 'n'"
+      print_centered "Please enter 'y' or 'n'"
     end
     answer == 'y'
   end
       
   def display_goodbye
-    puts "Thank you for playing Code Castle! Goodbye!"
+    print_centered "Thank you for playing Code Castle! Goodbye!"
   end
       
   def play_inner_loop
-    puts "You are playing a #{type.class} game"
+    print_centered "You are playing a #{type.class} game"
+    sleep(3)
   end
 end
 
@@ -119,3 +150,5 @@ class Long < Game
     @questions = []
   end
 end
+
+Game.new.play
