@@ -14,6 +14,7 @@ class Villains
 
   def initialize
     @villains = []
+    populate
   end
 
   def populate
@@ -30,7 +31,7 @@ class Villains
   end
 
   def each(&block)
-    villains(&block)
+    villains(block)
   end
 
   def amount

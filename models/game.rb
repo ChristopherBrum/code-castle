@@ -31,7 +31,7 @@ class Game
       clear
       display_welcome
       assign_game_type
-      play_inner_loop
+      type.play
       display_game_over
       break unless play_again?
     end
@@ -113,42 +113,74 @@ class Game
   end
 end
 
-class Short < Game 
-  MAX_QUESTIONS = 10
-  
+class InnerGame < Game
   attr_reader :questions
-  
+  attr_accessor :level
+  attr_reader :villains
+
   def initialize
     @questions = []
+    @level = 0
+    @villains = Villains.new
   end
-  
-#   def play
-#     populate_questions
-#     loop do 
-#       # 
-#     end
-#   end
-  
-#   def populate_questions
-#     # get 10 random questions from database
-#     # add to @questions array
-#   end
+
+  def play
+    loop do
+      clear
+      print_centered(level_message)
+      villain_display
+      # TODO implement question asking and answer check
+      ask_question
+      # Note, this loop will break and raise an error once we run out of levels
+      break if out_of_questions?
+      next_level
+    end
+
+  end
+
+  def level_message
+    MESSAGES['lair_intros'][level]
+  end
+
+  def villain_display
+    # call select to get rid of nil elements
+    print_centered(MESSAGES['villain_intro'].select { |ele| ele }.sample)
+    villains.display!
+    print_centered(MESSAGES['villain_taunts'].select { |ele| ele }.sample)
+  end
+
+  def ask_question
+    loop do
+      print_centered("What is the air speed velocity of an unladen swallow?")
+      set_margin
+      answer = gets.chomp
+      puts
+      break unless answer.empty?
+      print_centered(MESSAGES['level']['retry'])
+    end
+    print_centered(MESSAGES['level']['victory'])
+    sleep(3)
+  end
+
+  def out_of_questions?
+    level == (self.class::MAX_QUESTIONS - 1)
+  end
+
+  def next_level
+    self.level += 1
+  end
 end
 
-class Medium < Game
+class Short < InnerGame 
+  MAX_QUESTIONS = 10
+end
+
+class Medium < InnerGame
   MAX_QUESTIONS = 20
-  
-  def initialize
-    @questions = []
-  end
 end
 
-class Long < Game 
+class Long < InnerGame 
   MAX_QUESTIONS = 30
-  
-  def initialize
-    @questions = []
-  end
 end
 
 Game.new.play
